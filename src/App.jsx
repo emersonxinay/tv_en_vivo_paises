@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import CountrySelector from './components/CountrySelector';
+import ChannelSelector from './components/ChannelSelector';
+import Player from './components/Player';
+import { fetchChannelsByCountry } from './services/iptvService';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [country, setCountry] = useState('');
+  const [channels, setChannels] = useState([]);
+  const [streamUrl, setStreamUrl] = useState('');
+  const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    const loadChannels = async () => {
+      if (!country) return;
+      setStatus('🔄 Cargando canales...');
+      try {
+        const data = await fetchChannelsByCountry(country);
+        setChannels(data);
+        setStatus(`✅ ${data.length} canales encontrados`);
+      } catch {
+        setStatus('❌ Error al cargar canales');
+      }
+    };
+    loadChannels();
+  }, [country]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <h1>🌍 TV en Vivo por País</h1>
+      <CountrySelector selected={country} onChange={setCountry} />
+      {status && <p>{status}</p>}
+      {channels.length > 0 && (
+        <ChannelSelector channels={channels} onSelect={setStreamUrl} />
+      )}
+      {streamUrl && <Player streamUrl={streamUrl} />}
+    </div>
+  );
 }
 
-export default App
+export default App;
