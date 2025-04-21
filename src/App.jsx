@@ -26,9 +26,9 @@ function App() {
       try {
         const data = await fetchChannelsByCountry(country);
         setChannels(data);
-        setStatus(`✅ ${data.length} canales encontrados`);
+        setStatus(` ${data.length} canales encontrados`);
       } catch {
-        setStatus('❌ Error al cargar canales');
+        setStatus(' Error al cargar canales');
       }
     };
     loadChannels();
@@ -60,7 +60,8 @@ function App() {
       <div className='nav_code'>
 
         <p> <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer"> Compilandocode</a> y <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza </a> te ayuda a ver </p>
-        <h1>🌍 TV en Vivo por País</h1>
+        <img src="../public/img/compitv.png" alt="" width="70rem" />
+        <h2> TV en Vivo por País</h2>
       </div>
 
       {/* Selector de país */}
@@ -75,7 +76,7 @@ function App() {
       </div>
 
       {/* Nombre del país seleccionado */}
-      {countryName && <p>📍 País seleccionado: {countryName}</p>}
+      {countryName && <p> País seleccionado: {countryName}</p>}
 
 
 
