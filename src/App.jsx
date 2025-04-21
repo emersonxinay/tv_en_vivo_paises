@@ -62,8 +62,11 @@ function App() {
       <CountrySelector selected={country} onChange={setCountry} />
 
       {/* Mapa mundial */}
-      <div style={{ width: '100%', height: '500px', margin: '20px 0' }}>
+      <div className='map-container'>
+
+        <p>Selecciona un país en el mapa para ver sus canales</p>
         <WorldMap onCountryClick={handleCountrySelect} />
+
       </div>
 
       {/* Nombre del país seleccionado */}

@@ -27,12 +27,17 @@ export default function WorldMap({ onCountryClick }) {
       .then((topology) => {
         const countries = topojson.feature(topology, topology.objects.countries).features;
         setPolygons(countries);
+
+        // Centramos la vista inicial del globo
+        setTimeout(() => {
+          globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 2 }, 1000);
+        }, 500); // Delay para asegurar que el globo esté montado
       })
       .catch((err) => console.error('Error cargando países:', err));
   }, []);
 
   return (
-    <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
+    <div className='globomundi'>
       <Globe
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
@@ -58,6 +63,15 @@ export default function WorldMap({ onCountryClick }) {
             const country = countries.find(c => c.code === code);
             if (country) {
               onCountryClick(code, country.name);
+
+              // Centra la cámara sobre el país seleccionado
+              if (polygon.centroid) {
+                globeEl.current.pointOfView({
+                  lat: polygon.centroid[1],
+                  lng: polygon.centroid[0],
+                  altitude: 1.5
+                }, 1000);
+              }
             }
           }
         }}

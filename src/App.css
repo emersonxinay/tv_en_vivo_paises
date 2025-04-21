@@ -91,3 +91,41 @@ video {
   max-width: 600px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
+
+.globomundi {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+.globomundi canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+@media (max-width: 768px) {
+  .globomundi {
+    position: relative;
+  width: 70%;
+  max-width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #000;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding: 2em;
+  }
+}
