@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className='nav_code'>
 
         <p> <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer"> Compilandocode</a> y <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza </a> te ayuda a ver </p>
         <h1>🌍 TV en Vivo por País</h1>
@@ -77,14 +77,7 @@ function App() {
       {/* Nombre del país seleccionado */}
       {countryName && <p>📍 País seleccionado: {countryName}</p>}
 
-      {/* Buscador de canales */}
-      <input
-        type="text"
-        placeholder="🔍 Buscar canal..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="searchInput"
-      />
+
 
       {/* Estado de carga */}
       {status && <p>{status}</p>}
@@ -97,6 +90,14 @@ function App() {
         </div>
         {/* Lista de canales */}
         <div className='listaCanales'>
+          {/* Buscador de canales */}
+          <input
+            type="text"
+            placeholder="🔍 Buscar canal..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="searchInput"
+          />
 
           {filteredChannels.length > 0 && (
             <ChannelSelector
@@ -106,6 +107,7 @@ function App() {
               favorites={favorites}
             />
           )}
+
         </div>
       </div>
 

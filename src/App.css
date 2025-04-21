@@ -1,5 +1,13 @@
 
-
+html, body {
+  margin: 0; /* o si realmente quieres margen, pon '10px' */
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f2027;
+  color: #fff;
+}
 
 
 .App {
@@ -37,6 +45,7 @@ select,
 .searchInput {
   padding: 12px 16px;
   font-size: 16px;
+  
   width: 90%;
   max-width: 500px;
   border-radius: 12px;
@@ -53,6 +62,27 @@ select:focus,
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
   background: linear-gradient(135deg, #264454, #3b5e6d, #4b7386);
 }
+.listaCanales {
+  height: 100%;
+  overflow-y: auto; /* scroll si la lista es larga */
+  padding: 0.5rem;
+  position: relative;
+}
+
+/* Este es el truco */
+.searchInput {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* asegura que esté por encima de la lista */
+  background-color: white; /* o el color de fondo de tu app */
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
 
 /* Mejora de botones si los tienes */
 button {
@@ -153,6 +183,8 @@ video {
   .main-video-lista {
     flex-direction: column;
     height: auto;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .videoPlayer {
@@ -160,53 +192,47 @@ video {
     height: 50vh;
   }
 
-  .listaCanales {
-    width: 100%;
-    height: 50vh;
-    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3);
-    overflow: hidden; /* ocultamos scroll aquí */
-    padding: 1rem;
-  }
-
-  /* Este es el contenedor interno de los canales que tendrá el scroll */
   .channel-list {
-    max-height: calc(70px * 5); /* 5 elementos visibles */
+    max-height: calc(70px * 5);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
 
-  /* Scroll solo en la lista interna */
-  .channel-list::-webkit-scrollbar {
-    width: 8px;
+  .listaCanales {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0.5rem;
+    position: relative;
+    width: 100%;
   }
 
-  .channel-list::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 4px;
+  .searchInput {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
 
-  .channel-list::-webkit-scrollbar-thumb:hover {
-    background: #888;
-  }
-}
-
-
-@media (max-width: 768px) {
   .globomundi {
     position: relative;
-  width: 70%;
-  max-width: 100%;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: #000;
-  overflow: hidden;
-  margin: 0 auto;
-  border-radius: 1rem;
-  padding: 2em;
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 1rem;
+    padding: 2em;
   }
 }
