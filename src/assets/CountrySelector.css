@@ -1,0 +1,28 @@
+/* CountrySelector.css */
+
+.country-selector-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.country-select {
+  width: 300px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  appearance: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.country-select:focus {
+  outline: none;
+  background: linear-gradient(135deg, #1c313d, #28465a, #375b71);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,31 @@
+/* ChannelSelector.css */
+
+.channel-selector {
+  margin-top: 20px;
+}
+
+.channel-select {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.channel-card {
+  background: #222;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.channel-buttons button {
+  margin-left: 10px;
+}
