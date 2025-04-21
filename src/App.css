@@ -148,6 +148,49 @@ video {
 .listaCanales::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+/* MEDIA QUERIES: Estilo para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .main-video-lista {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .videoPlayer {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .listaCanales {
+    width: 100%;
+    height: 50vh;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* ocultamos scroll aquí */
+    padding: 1rem;
+  }
+
+  /* Este es el contenedor interno de los canales que tendrá el scroll */
+  .channel-list {
+    max-height: calc(70px * 5); /* 5 elementos visibles */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Scroll solo en la lista interna */
+  .channel-list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .channel-list::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+  }
+
+  .channel-list::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
+}
 
 
 @media (max-width: 768px) {
