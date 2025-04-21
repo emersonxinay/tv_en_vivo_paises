@@ -110,6 +110,44 @@ video {
   margin: 0 auto;
 }
 
+.main-video-lista {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; /* Puedes ajustar según tu layout */
+  overflow: hidden;
+}
+
+.videoPlayer {
+  flex: 3; /* Ocupa más espacio */
+  background-color: #000; /* Por si el video no carga */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listaCanales {
+  flex: 1; /* Ocupa menos espacio */
+  background-color: #1a1a1a;
+  color: white;
+  overflow-y: auto;
+  height: 100%; /* Que ocupe todo el alto del contenedor */
+  padding: 1rem;
+  box-shadow: inset 1px 0 5px rgba(0,0,0,0.3);
+}
+
+/* Estilo opcional para los elementos de la lista */
+.listaCanales::-webkit-scrollbar {
+  width: 8px;
+}
+
+.listaCanales::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.listaCanales::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
 
 
 @media (max-width: 768px) {

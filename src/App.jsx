@@ -5,6 +5,7 @@ import Player from './components/Player';
 import WorldMap from './components/WorldMap'; // Importa el nuevo componente
 import { fetchChannelsByCountry } from './services/iptvService';
 import './App.css';
+import Footer from './components/shared/Footer';
 
 function App() {
   const [country, setCountry] = useState('');
@@ -56,7 +57,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>🌍 TV en Vivo por País</h1>
+      <div>
+
+        <p> <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer"> Compilandocode</a> y <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza </a> te ayuda a ver </p>
+        <h1>🌍 TV en Vivo por País</h1>
+      </div>
 
       {/* Selector de país */}
       <CountrySelector selected={country} onChange={setCountry} />
@@ -84,18 +89,29 @@ function App() {
       {/* Estado de carga */}
       {status && <p>{status}</p>}
 
-      {/* Reproductor de video */}
-      {streamUrl && <Player streamUrl={streamUrl} />}
+      <div className='main-video-lista'>
+        {/* Reproductor de video */}
+        <div className='videoPlayer'>
 
-      {/* Lista de canales */}
-      {filteredChannels.length > 0 && (
-        <ChannelSelector
-          channels={filteredChannels}
-          onSelect={setStreamUrl}
-          onFavorite={toggleFavorite}
-          favorites={favorites}
-        />
-      )}
+          {streamUrl && <Player streamUrl={streamUrl} />}
+        </div>
+        {/* Lista de canales */}
+        <div className='listaCanales'>
+
+          {filteredChannels.length > 0 && (
+            <ChannelSelector
+              channels={filteredChannels}
+              onSelect={setStreamUrl}
+              onFavorite={toggleFavorite}
+              favorites={favorites}
+            />
+          )}
+        </div>
+      </div>
+
+
+
+
 
       {/* Favoritos */}
       {favorites.length > 0 && (
@@ -109,6 +125,10 @@ function App() {
           />
         </>
       )}
+      {/* Footer */}
+      <Footer />
+
+      {/* Créditos */}
     </div>
   );
 }
