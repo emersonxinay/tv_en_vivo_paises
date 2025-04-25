@@ -34,7 +34,35 @@ html, body {
 
 @media (max-width: 480px) {
   .App {
-    padding: 0px 0px; /* Ajuste para dispositivos muy pequeños */
+    padding: 10px 5px; /* Ajuste para dispositivos muy pequeños */
+    gap: 10px; /* Reduce el espacio entre elementos */
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    width: 100vw; /* Asegura que ocupe todo el ancho de la ventana */
+    height: auto; /* Asegura que ocupe todo el alto de la ventana */
+  }
+  .imgLogo{
+    width: 60px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+
+  }
+  .map-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    margin-right: 4.5em;
+    height: auto; /* Ajusta la altura según sea necesario */
+
+  }
+  .map-container p {
+    font-size: 1.2rem; /* Ajusta el tamaño del texto */
+    margin: 0; /* Elimina márgenes innecesarios */
+    padding: 0px 5px; /* Elimina relleno innecesario */
+
   }
   .main-video-lista{
     flex-direction: column;

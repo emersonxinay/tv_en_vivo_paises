@@ -86,7 +86,7 @@ function App() {
           <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer">Compilandocode</a> y
           <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza</a> te ayuda a ver
         </p>
-        <img src="../public/img/compitv.png" alt="" width="70rem" />
+        <img src="../public/img/compitv.png" className='imgLogo' alt="" width="70rem" />
         <h2> TV en Vivo por País</h2>
       </div>
 
