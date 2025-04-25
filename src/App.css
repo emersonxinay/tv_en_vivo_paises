@@ -34,7 +34,13 @@ html, body {
 
 @media (max-width: 480px) {
   .App {
-    padding: 10px 5px; /* Ajuste para dispositivos muy pequeños */
+    padding: 0px 0px; /* Ajuste para dispositivos muy pequeños */
+  }
+  .main-video-lista{
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 
@@ -145,6 +151,7 @@ video {
   flex-direction: row;
   height: 90vh; /* Puedes ajustar según tu layout */
   overflow: hidden;
+
 }
 
 .videoPlayer {
@@ -236,4 +243,13 @@ video {
     border-radius: 1rem;
     padding: 2em;
   }
+}
+
+.nav_code{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding:0rem 1rem;
 }
