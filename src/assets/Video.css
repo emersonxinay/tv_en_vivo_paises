@@ -190,8 +190,7 @@
   height: auto;
   border-radius: 30px;
   padding: 1rem;
-  padding-right: 4rem;
-  padding-left: 2.5rem;
+  margin-top: 1em;
 }
 
 }
