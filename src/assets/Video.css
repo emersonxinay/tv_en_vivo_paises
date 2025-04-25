@@ -13,6 +13,12 @@
   flex-direction: column;
   align-items: center;
 }
+#video {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  padding: 2rem;
+}
 
 /* Display del nombre del canal */
 .custom-video-player .custom-channel-name-display {
@@ -94,16 +100,98 @@
 }
 
 @media (max-width: 480px) {
-  .custom-video-player {
-    padding: 0.5rem;
-  }
+  /* ==========================================
+   Estilos para el reproductor de video en móviles
+   ========================================== */
 
-  .custom-video-player .custom-controls button {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-  }
+/* Contenedor principal del reproductor de video */
+.custom-video-player {
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
 
-  .custom-video-player .custom-channel-name-display {
-    font-size: 1rem;
-  }
+/* Display del nombre del canal seleccionado */
+.custom-video-player .custom-channel-name-display {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.custom-video-player .custom-channel-name-display h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Estilos para el reproductor y el canal por defecto */
+.custom-video-player .custom-video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.custom-video-player .custom-canal-defecto {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+  height: 250px; /* Ajustado para móviles */
+}
+
+/* Estilos para los botones de navegación */
+.custom-video-player .custom-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.custom-video-player .custom-controls button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 48%; /* Ajustado para que los botones ocupen el 48% de la pantalla */
+  margin-bottom: 0.5rem; /* Espacio entre los botones */
+}
+
+.custom-video-player .custom-controls button:hover {
+  background-color: #0056b3;
+}
+
+.custom-video-player .custom-controls button:focus {
+  outline: none;
+}
+#video {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  padding: 1rem;
+  padding-right: 4rem;
+  padding-left: 2.5rem;
+}
+
 }

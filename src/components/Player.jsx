@@ -29,17 +29,16 @@ export default function Player({ streamUrl }) {
       id="video"
       controls
       autoPlay
-
       playsInline
       style={{
         width: '100%',
         maxWidth: '100%',
         marginTop: '2em',
-        borderRadius: '0.5em',
+        borderRadius: '0.8em',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
         border: '1px solid #ccc',
 
-        backgroundColor: 'blue',
+        backgroundColor: '#203a43',
         aspectRatio: '16/9',
       }}
     ></video>

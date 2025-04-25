@@ -143,13 +143,13 @@ video {
 .main-video-lista {
   display: flex;
   flex-direction: row;
-  height: 100vh; /* Puedes ajustar según tu layout */
+  height: 90vh; /* Puedes ajustar según tu layout */
   overflow: hidden;
 }
 
 .videoPlayer {
-  flex: 3; /* Ocupa más espacio */
-  background-color: #000; /* Por si el video no carga */
+  flex: 5; /* Ocupa más espacio */
+  background-color: #060c3b; /* Por si el video no carga */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +178,7 @@ video {
 .listaCanales::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+
 /* MEDIA QUERIES: Estilo para pantallas más pequeñas */
 @media (max-width: 768px) {
   .main-video-lista {
@@ -189,7 +190,7 @@ video {
 
   .videoPlayer {
     width: 100%;
-    height: 50vh;
+    height: 100vh;
   }
 
   .channel-list {
