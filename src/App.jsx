@@ -8,6 +8,8 @@ import CanalDefecto from './components/CanalDefecto';
 import './App.css';
 import './assets/Video.css';
 import Footer from './components/shared/Footer';
+import logoImg from '../public/img/compitv.png'; // Asegúrate que la ruta sea correcta
+
 
 function App() {
   const [country, setCountry] = useState('');
@@ -81,13 +83,24 @@ function App() {
 
   return (
     <div className="App">
-      <div className='nav_code'>
-        <p>
-          <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer">Compilandocode</a> y
-          <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza</a> te ayuda a ver
-        </p>
-        <img src="../public/img/compitv.png" className='imgLogo' alt="" width="70rem" />
-        <h2> TV en Vivo por País</h2>
+      <div className="nav_container">
+        <div className="nav_content">
+          <div className="nav_links">
+            <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer">
+              Compilandocode
+            </a>
+            <span className="separator">|</span>
+            <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">
+              Emerson Espinoza
+            </a>
+          </div>
+
+          <div className="nav_logo">
+            <img src={logoImg} alt="CompiTV Logo" />
+          </div>
+
+          <h2 className="nav_title">TV en Vivo por País</h2>
+        </div>
       </div>
 
       <CountrySelector selected={country} onChange={setCountry} />
