@@ -112,12 +112,13 @@
   width: 100%;
   max-width: 100%;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(20, 44, 197, 0.2);
   margin-top: 1rem;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: auto;
 }
 
@@ -135,7 +136,7 @@
 
 .custom-video-player .custom-channel-name-display h3 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 
 /* Estilos para el reproductor y el canal por defecto */
@@ -155,14 +156,14 @@
   align-items: center;
   color: white;
   font-size: 1.2rem;
-  height: 250px; /* Ajustado para móviles */
+  height: auto; /* Ajustado para móviles */
 }
 
 /* Estilos para los botones de navegación */
 .custom-video-player .custom-controls {
   display: flex;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 0.1rem;
 }
 
 .custom-video-player .custom-controls button {
@@ -171,10 +172,10 @@
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 48%; /* Ajustado para que los botones ocupen el 48% de la pantalla */
+  width: 38%; /* Ajustado para que los botones ocupen el 48% de la pantalla */
   margin-bottom: 0.5rem; /* Espacio entre los botones */
 }
 
@@ -189,10 +190,9 @@
   width: 100%;
   height: auto;
   border-radius: 30px;
-  padding: 1rem;
-  padding-right: 1rem;
-  padding-left: 0.5rem;
-  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  padding-right: 3.8em;
 }
 
 }
