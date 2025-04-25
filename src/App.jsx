@@ -4,6 +4,7 @@ import ChannelSelector from './components/ChannelSelector';
 import Player from './components/Player';
 import WorldMap from './components/WorldMap'; // Importa el nuevo componente
 import { fetchChannelsByCountry } from './services/iptvService';
+import CanalDefecto from './components/CanalDefecto';
 import './App.css';
 import Footer from './components/shared/Footer';
 
@@ -63,31 +64,14 @@ function App() {
         <img src="../public/img/compitv.png" alt="" width="70rem" />
         <h2> TV en Vivo por País</h2>
       </div>
-
-      {/* Selector de país */}
       <CountrySelector selected={country} onChange={setCountry} />
-
-      {/* Mapa mundial */}
-      <div className='map-container'>
-
-        <p>Selecciona un país en el mapa para ver sus canales</p>
-        <WorldMap onCountryClick={handleCountrySelect} />
-
-      </div>
-
-      {/* Nombre del país seleccionado */}
-      {countryName && <p> País seleccionado: {countryName}</p>}
-
-
-
-      {/* Estado de carga */}
-      {status && <p>{status}</p>}
-
       <div className='main-video-lista'>
+        {/* Selector de país */}
         {/* Reproductor de video */}
+
         <div className='videoPlayer'>
 
-          {streamUrl && <Player streamUrl={streamUrl} />}
+          {streamUrl ? <Player streamUrl={streamUrl} /> : <CanalDefecto />}
         </div>
         {/* Lista de canales */}
         <div className='listaCanales'>
@@ -115,6 +99,27 @@ function App() {
 
 
 
+      {/* Mapa mundial */}
+      <div className='map-container'>
+
+        <p>Selecciona un país en el mapa para ver sus canales</p>
+        <WorldMap onCountryClick={handleCountrySelect} />
+
+      </div>
+
+      {/* Nombre del país seleccionado */}
+      {countryName && <p> País seleccionado: {countryName}</p>}
+
+
+
+      {/* Estado de carga */}
+      {status && <p>{status}</p>}
+
+
+
+
+
+
 
       {/* Favoritos */}
       {favorites.length > 0 && (
@@ -128,6 +133,8 @@ function App() {
           />
         </>
       )}
+
+
       {/* Footer */}
       <Footer />
 

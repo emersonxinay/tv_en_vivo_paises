@@ -1,11 +1,18 @@
 import '../assets/ChannelSelector.css';
-
+import { useEffect } from 'react';
 export default function ChannelSelector({ channels, onSelect, onFavorite, favorites }) {
   const handleSelectChange = (e) => {
     const url = e.target.value;
     if (!url) return;
     onSelect(url);
   };
+  // Mostrar canales en la consola al renderizar
+  useEffect(() => {
+    if (channels?.length > 0) {
+      console.log('📺 Lista de canales disponibles:');
+      console.table(channels.map(c => ({ Nombre: c.name, URL: c.url })));
+    }
+  }, [channels]);
 
   return (
     <div className="channel-selector">
