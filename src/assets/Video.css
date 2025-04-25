@@ -15,9 +15,8 @@
 }
 #video {
   width: 100%;
-  height: auto;
-  border-radius: 30px;
-  padding: 2rem;
+  height: 100vh;
+  
 }
 
 /* Display del nombre del canal */
@@ -192,7 +191,10 @@
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  padding-right: 3.8em;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-right: 0.9rem;
+ 
 }
 
 }
