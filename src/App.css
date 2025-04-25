@@ -8,7 +8,14 @@ html, body {
   background: #0f2027;
   color: #fff;
 }
-
+.main-video-lista{
+  display: flex;
+  flex-direction: row;
+  height: 90vh; /* Puedes ajustar según tu layout */
+  overflow: hidden;
+  background-color: #060c3b;
+  
+}
 
 .App {
   text-align: center;
@@ -69,6 +76,7 @@ html, body {
     height: auto;
     width: 100%;
     overflow-x: hidden;
+    
   }
 }
 
@@ -154,6 +162,10 @@ video {
   width: 90%;
   max-width: 600px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.boton_select
+{
+  background-color: red
 }
 
 .globomundi {

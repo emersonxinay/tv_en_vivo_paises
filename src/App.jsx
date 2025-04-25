@@ -2,20 +2,20 @@ import { useState, useEffect } from 'react';
 import CountrySelector from './components/CountrySelector';
 import ChannelSelector from './components/ChannelSelector';
 import Player from './components/Player';
-import WorldMap from './components/WorldMap'; // Importa el nuevo componente
+import WorldMap from './components/WorldMap';
 import { fetchChannelsByCountry } from './services/iptvService';
 import CanalDefecto from './components/CanalDefecto';
 import './App.css';
 import './assets/Video.css';
 import Footer from './components/shared/Footer';
-import logoImg from '../public/img/compitv.png'; // Asegúrate que la ruta sea correcta
-
+import logoImg from '../public/img/compitv.png';
 
 function App() {
   const [country, setCountry] = useState('');
-  const [countryName, setCountryName] = useState(''); // Nuevo estado para el nombre del país
+  const [countryName, setCountryName] = useState('');
   const [channels, setChannels] = useState([]);
   const [streamUrl, setStreamUrl] = useState('');
+  const [currentChannelName, setCurrentChannelName] = useState('');
   const [status, setStatus] = useState('');
   const [search, setSearch] = useState('');
   const [currentChannelIndex, setCurrentChannelIndex] = useState(-1);
@@ -40,16 +40,20 @@ function App() {
     }
   }, [country]);
 
-  // Filtrar canales basado en búsqueda
   const filteredChannels = channels.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase())
   );
 
   useEffect(() => {
-    if (currentChannelIndex >= 0 && filteredChannels.length > 0) {
-      setStreamUrl(filteredChannels[currentChannelIndex].url);
+    if (currentChannelIndex >= 0) {
+      const channel = filteredChannels[currentChannelIndex];
+      if (channel) {
+        setStreamUrl(channel.url);
+        setCurrentChannelName(channel.name);
+      }
     }
   }, [currentChannelIndex, filteredChannels]);
+
 
   const nextChannel = () => {
     if (filteredChannels.length === 0) return;
@@ -59,26 +63,22 @@ function App() {
 
   const prevChannel = () => {
     if (filteredChannels.length === 0) return;
-    const prevIndex =
-      (currentChannelIndex - 1 + filteredChannels.length) % filteredChannels.length;
+    const prevIndex = (currentChannelIndex - 1 + filteredChannels.length) % filteredChannels.length;
     setCurrentChannelIndex(prevIndex);
   };
 
   const toggleFavorite = (channel) => {
     const exists = favorites.find((f) => f.url === channel.url);
-    let updated;
-    if (exists) {
-      updated = favorites.filter((f) => f.url !== channel.url);
-    } else {
-      updated = [...favorites, channel];
-    }
+    const updated = exists
+      ? favorites.filter((f) => f.url !== channel.url)
+      : [...favorites, channel];
     setFavorites(updated);
     localStorage.setItem('favorites', JSON.stringify(updated));
   };
 
   const handleCountrySelect = (code, name) => {
     setCountry(code);
-    setCountryName(name); // Actualiza el nombre del país
+    setCountryName(name);
   };
 
   return (
@@ -86,13 +86,9 @@ function App() {
       <div className="nav_container">
         <div className="nav_content">
           <div className="nav_links">
-            <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer">
-              Compilandocode
-            </a>
+            <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer">Compilandocode</a>
             <span className="separator">|</span>
-            <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">
-              Emerson Espinoza
-            </a>
+            <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza</a>
           </div>
 
           <div className="nav_logo">
@@ -105,19 +101,16 @@ function App() {
 
       <CountrySelector selected={country} onChange={setCountry} />
 
-      <div className='main-video-lista'>
-        <div className='custom-video-player'>
-          {/* Mostrar nombre del canal seleccionado */}
-          {streamUrl && filteredChannels.length > 0 && (
+      <div className="main-video-lista">
+        <div className="custom-video-player">
+          {streamUrl && (
             <div className="custom-channel-name-display">
-              <h3>{filteredChannels[currentChannelIndex]?.name}</h3>
+              <h3>{currentChannelName}</h3>
             </div>
           )}
 
-          {/* Si no hay streamUrl, muestra el canal por defecto */}
           {streamUrl ? <Player streamUrl={streamUrl} /> : <CanalDefecto />}
 
-          {/* Botones para navegar entre canales */}
           {filteredChannels.length > 0 && (
             <div className="custom-controls">
               <button onClick={prevChannel}>🔼 Anterior</button>
@@ -126,9 +119,7 @@ function App() {
           )}
         </div>
 
-
-        {/* Lista de canales */}
-        <div className='listaCanales'>
+        <div className="listaCanales">
           <input
             type="text"
             placeholder="🔍 Buscar canal..."
@@ -140,7 +131,12 @@ function App() {
           {filteredChannels.length > 0 && (
             <ChannelSelector
               channels={filteredChannels}
-              onSelect={setStreamUrl}
+              onSelect={(url) => {
+                const index = filteredChannels.findIndex((c) => c.url === url);
+                setCurrentChannelIndex(index);
+                setStreamUrl(url);
+                setCurrentChannelName(filteredChannels[index]?.name || '');
+              }}
               onFavorite={toggleFavorite}
               favorites={favorites}
             />
@@ -148,32 +144,32 @@ function App() {
         </div>
       </div>
 
-      {/* Mapa mundial */}
-      <div className='map-container'>
+      <div className="map-container">
         <p>Selecciona un país en el mapa para ver sus canales</p>
         <WorldMap onCountryClick={handleCountrySelect} />
       </div>
 
-      {/* Nombre del país seleccionado */}
-      {countryName && <p> País seleccionado: {countryName}</p>}
+      {countryName && <p>País seleccionado: {countryName}</p>}
 
-      {/* Estado de carga */}
       {status && <p>{status}</p>}
 
-      {/* Favoritos */}
       {favorites.length > 0 && (
         <>
           <h2>⭐ Favoritos</h2>
           <ChannelSelector
             channels={favorites}
-            onSelect={setStreamUrl}
+            onSelect={(url) => {
+              const channel = favorites.find((c) => c.url === url);
+              setCurrentChannelIndex(-1);
+              setStreamUrl(url);
+              setCurrentChannelName(channel?.name || '');
+            }}
             onFavorite={toggleFavorite}
             favorites={favorites}
           />
         </>
       )}
 
-      {/* Footer */}
       <Footer />
     </div>
   );
