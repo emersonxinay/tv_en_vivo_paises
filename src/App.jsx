@@ -16,6 +16,8 @@ function App() {
   const [channels, setChannels] = useState([]);
   const [streamUrl, setStreamUrl] = useState('');
   const [currentChannelName, setCurrentChannelName] = useState('');
+  const [selectedChannel, setSelectedChannel] = useState(null);
+
   const [status, setStatus] = useState('');
   const [search, setSearch] = useState('');
   const [currentChannelIndex, setCurrentChannelIndex] = useState(-1);
@@ -45,27 +47,27 @@ function App() {
   );
 
   useEffect(() => {
-    if (currentChannelIndex >= 0) {
-      const channel = filteredChannels[currentChannelIndex];
-      if (channel) {
-        setStreamUrl(channel.url);
-        setCurrentChannelName(channel.name);
-      }
+    if (selectedChannel) {
+      setStreamUrl(selectedChannel.url);
+      setCurrentChannelName(selectedChannel.name);
     }
-  }, [currentChannelIndex, filteredChannels]);
+  }, [selectedChannel]);
 
 
   const nextChannel = () => {
     if (filteredChannels.length === 0) return;
     const nextIndex = (currentChannelIndex + 1) % filteredChannels.length;
     setCurrentChannelIndex(nextIndex);
+    setSelectedChannel(filteredChannels[nextIndex]);
   };
 
   const prevChannel = () => {
     if (filteredChannels.length === 0) return;
     const prevIndex = (currentChannelIndex - 1 + filteredChannels.length) % filteredChannels.length;
     setCurrentChannelIndex(prevIndex);
+    setSelectedChannel(filteredChannels[prevIndex]);
   };
+
 
   const toggleFavorite = (channel) => {
     const exists = favorites.find((f) => f.url === channel.url);
@@ -133,10 +135,10 @@ function App() {
               channels={filteredChannels}
               onSelect={(url) => {
                 const index = filteredChannels.findIndex((c) => c.url === url);
-                setCurrentChannelIndex(index);
-                setStreamUrl(url);
-                setCurrentChannelName(filteredChannels[index]?.name || '');
+                setCurrentChannelIndex(index); // para usar anterior/siguiente
+                setSelectedChannel(filteredChannels[index]);
               }}
+
               onFavorite={toggleFavorite}
               favorites={favorites}
             />
@@ -161,9 +163,9 @@ function App() {
             onSelect={(url) => {
               const channel = favorites.find((c) => c.url === url);
               setCurrentChannelIndex(-1);
-              setStreamUrl(url);
-              setCurrentChannelName(channel?.name || '');
+              setSelectedChannel(channel);
             }}
+
             onFavorite={toggleFavorite}
             favorites={favorites}
           />
