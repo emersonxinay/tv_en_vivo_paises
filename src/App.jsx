@@ -11,7 +11,7 @@ import Footer from './components/shared/Footer';
 import logoImg from '../public/img/compitv.png';
 
 function App() {
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState('pe');
   const [countryName, setCountryName] = useState('');
   const [channels, setChannels] = useState([]);
   const [streamUrl, setStreamUrl] = useState('');
