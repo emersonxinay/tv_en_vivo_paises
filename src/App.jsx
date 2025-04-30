@@ -9,6 +9,7 @@ import './App.css';
 import './assets/Video.css';
 import Footer from './components/shared/Footer';
 import logoImg from '../public/img/compitv.png';
+import portada from '../public/img/portada-compitv.png';
 
 function App() {
   const [country, setCountry] = useState('pe');
@@ -176,6 +177,7 @@ function App() {
           />
         </>
       )}
+      <img src={portada} alt="Portada CompiTV" className='img-portada' />
       <Footer />
     </div>
   );

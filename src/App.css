@@ -45,6 +45,13 @@ html, body {
 .channel-logo:hover {
   box-shadow: 0.3em 0.3em 0.2em rgba(69, 239, 22, 0.5); /* Aumenta la sombra al pasar el ratón */
 }
+.img-portada{
+  width: 100%;
+  height: auto;
+  
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
 
 
 @media (max-width: 768px) {
@@ -258,6 +265,14 @@ video {
   .channel-logo:hover {
     box-shadow: 0.3em 0.3em 0.2em rgba(69, 239, 22, 0.5); /* Aumenta la sombra al pasar el ratón */
   
+  }
+  .img-portada{
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1rem;
   }
   
   .channel-list {
