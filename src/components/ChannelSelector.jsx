@@ -6,7 +6,7 @@ export default function ChannelSelector({
   onSelect,
   onFavorite,
   favorites,
-  selectedUrl // ✅ Prop para resaltar el canal seleccionado
+  selectedUrl
 }) {
   const handleSelectChange = (e) => {
     const url = e.target.value;
@@ -17,13 +17,12 @@ export default function ChannelSelector({
   useEffect(() => {
     if (channels?.length > 0) {
       console.log('📺 Lista de canales disponibles:');
-      console.table(channels.map(c => ({ Nombre: c.name, URL: c.url })));
+      console.table(channels.map(c => ({ Nombre: c.name, URL: c.url, Logo: c.logo })));
     }
   }, [channels]);
 
   return (
     <div className="channel-selector">
-      {/* Dropdown select */}
       <select onChange={handleSelectChange} className="channel-select">
         <option value="">📺 Selecciona un canal</option>
         {channels.map((channel, index) => (
@@ -33,7 +32,6 @@ export default function ChannelSelector({
         ))}
       </select>
 
-      {/* Lista de canales con botones */}
       <div className="channel-list">
         {channels.map((channel, index) => {
           const isFav = favorites?.some(fav => fav.url === channel.url);
@@ -42,22 +40,39 @@ export default function ChannelSelector({
             <div
               key={index}
               className={`channel-card ${isSelected ? 'selected-channel' : ''}`}
+              onClick={() => onSelect(channel.url)}
             >
-              <button className="boton_select" onClick={() => onSelect(channel.url)}>
-                <span>{isFav ? '⭐ ' : ''}{channel.name}</span>
+              <img
+                src={channel.logo || '/default-logo.png'}
+                alt={`${channel.name} logo`}
+                className="channel-logo"
+              />
+
+              <div className="channel-info">
+                <span className="channel-name">
+                  {isFav ? '⭐ ' : ''}
+                  {channel.name}
+                </span>
+
                 <div className="channel-buttons">
-                  <button onClick={(e) => {
-                    e.stopPropagation();
-                    onSelect(channel.url);
-                  }}>▶️ Ver</button>
-                  <button onClick={(e) => {
-                    e.stopPropagation();
-                    onFavorite(channel);
-                  }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelect(channel.url);
+                    }}
+                  >
+                    ▶️ Ver
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onFavorite(channel);
+                    }}
+                  >
                     {isFav ? '💔 Quitar' : '⭐ Favorito'}
                   </button>
                 </div>
-              </button>
+              </div>
             </div>
           );
         })}

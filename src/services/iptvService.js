@@ -8,8 +8,10 @@ export async function fetchChannelsByCountry(countryCode) {
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].startsWith('#EXTINF')) {
       const name = lines[i].split(',')[1];
+      const logoMatch = lines[i].match(/tvg-logo="([^"]+)"/);
+      const logo = logoMatch ? logoMatch[1] : null;
       const streamUrl = lines[i + 1];
-      channels.push({ name, url: streamUrl });
+      channels.push({ name, url: streamUrl, logo });
     }
   }
 

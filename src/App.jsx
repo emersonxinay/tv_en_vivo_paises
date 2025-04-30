@@ -32,6 +32,7 @@ function App() {
         setStatus('🔄 Cargando canales...');
         try {
           const data = await fetchChannelsByCountry(country);
+          console.log('Canales cargados:', data);  // Verifica que los canales tienen el logo
           setChannels(data);
           setStatus(`${data.length} canales encontrados`);
         } catch {
@@ -53,7 +54,6 @@ function App() {
     }
   }, [selectedChannel]);
 
-
   const nextChannel = () => {
     if (filteredChannels.length === 0) return;
     const nextIndex = (currentChannelIndex + 1) % filteredChannels.length;
@@ -68,8 +68,12 @@ function App() {
     setSelectedChannel(filteredChannels[prevIndex]);
   };
 
-
   const toggleFavorite = (channel) => {
+    if (!channel.logo) {
+      console.error('Este canal no tiene logo, no se puede agregar a favoritos.');
+      return;  // No agregar el canal a favoritos si no tiene logo
+    }
+
     const exists = favorites.find((f) => f.url === channel.url);
     const updated = exists
       ? favorites.filter((f) => f.url !== channel.url)
@@ -122,6 +126,8 @@ function App() {
         </div>
 
         <div className="listaCanales">
+          <p>Selecciona un pais y selecciona tu canal</p>
+          <CountrySelector selected={country} onChange={setCountry} />
           <input
             type="text"
             placeholder="🔍 Buscar canal..."
@@ -159,19 +165,17 @@ function App() {
         <>
           <h2>⭐ Favoritos</h2>
           <ChannelSelector
-            channels={favorites}
+            channels={favorites}  // Asegurándote de pasar los canales favoritos con logo
             onSelect={(url) => {
               const channel = favorites.find((c) => c.url === url);
               setCurrentChannelIndex(-1);
               setSelectedChannel(channel);
             }}
-
             onFavorite={toggleFavorite}
             favorites={favorites}
           />
         </>
       )}
-
       <Footer />
     </div>
   );
