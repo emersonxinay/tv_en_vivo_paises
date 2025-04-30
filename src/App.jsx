@@ -9,7 +9,7 @@ import './App.css';
 import './assets/Video.css';
 import Footer from './components/shared/Footer';
 import logoImg from '../public/img/compitv.png';
-import portada from '../public/img/portada-compitv.png';
+import portada from '../public/img/portadacompitv.png';
 
 function App() {
   const [country, setCountry] = useState('pe');
