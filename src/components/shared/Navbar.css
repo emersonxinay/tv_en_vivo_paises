@@ -93,7 +93,22 @@
   cursor: pointer;
   margin-left: auto;
 }
-
+#intro{
+  /* ocultar */
+  display: none;
+}
+#funciona {
+  /* ocultar */
+  display: none;
+}
+.que_es_compi, .como_funciona{
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.acordeon-item
+{
+margin: 10px;
+}
 /* === Responsive === */
 @media (max-width: 768px) {
   .navbar_compitv {
@@ -155,7 +170,6 @@
   .navbar_compitv_title {
     font-size: 1rem;
     font-weight: 600;
-    margin: 0;
     line-height: 1.2;
   }
 
@@ -213,15 +227,15 @@
 .platform-card--steps {
   flex: 1 1 30%;
 }
-.platform-card--intro img-portada {
+
+.img-portada {
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
   margin-bottom: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
-
 }
+
 .card-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -239,14 +253,6 @@
   line-height: 1.6;
 }
 
-.img-portada {
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-  margin-top: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
 @media (max-width: 1024px) {
   .platform-description-container {
     flex-wrap: wrap;
@@ -257,24 +263,80 @@
   .platform-card--steps {
     flex: 1 1 100%;
   }
-  .platform-card--intro img-portada {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    
-  
-  }
 }
-@media (max-width: 480px){
-  .platform-card--intro img-portada {
-    width: 100%;
-    border-radius: 12px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    
-  
+
+@media (max-width: 480px) {
+  .img-portada {
+    margin-top: 1rem;
   }
+  /* Acordeón base */
+.acordeon {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
 }
+
+/* Oculta los checkboxes */
+.acordeon input[type="checkbox"] {
+  display: none;
+}
+
+/* Estilo del label */
+.acordeon label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: #02131f;
+  color: #fff;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.acordeon label:hover {
+  background-color: #02161f;
+}
+
+/* Contenido colapsable */
+.acordeon .content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 1rem;
+}
+
+/* Activa el contenido cuando el checkbox está marcado */
+.acordeon input[type="checkbox"]:checked + label + .content {
+  max-height: 1000px; /* Suficiente para mostrar el contenido */
+  padding: 1rem;
+}
+
+/* Tarjetas dentro del acordeón */
+.platform-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Imagen dentro del acordeón */
+.img-portada {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+/* Estilo adicional para la lista */
+.platform-description-steps {
+  list-style: none;
+  padding-left: 0;
+}
+
+.platform-description-steps li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+}
+
