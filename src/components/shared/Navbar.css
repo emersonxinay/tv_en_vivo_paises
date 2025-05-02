@@ -219,7 +219,7 @@
   object-fit: cover;
   margin-bottom: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  
+
 
 }
 .card-title {
@@ -256,5 +256,25 @@
   .platform-card--intro,
   .platform-card--steps {
     flex: 1 1 100%;
+  }
+  .platform-card--intro img-portada {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
+  
+  }
+}
+@media (max-width: 480px){
+  .platform-card--intro img-portada {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    
+  
   }
 }
