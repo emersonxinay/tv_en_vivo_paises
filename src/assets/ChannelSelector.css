@@ -13,10 +13,11 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
+ 
 }
 
 .channel-card {
-  background: #222;
+  background: #0f2027;
   padding: 10px;
   border-radius: 10px;
   display: flex;
@@ -31,7 +32,7 @@
 
 
 .channel-card:hover {
-  background-color: #011727;
+  background-color: #000d1b;
 }
 
 .selected-channel {

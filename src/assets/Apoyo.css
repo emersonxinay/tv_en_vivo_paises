@@ -1,0 +1,195 @@
+/* === Sección Principal === */
+.apoyo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* === Imagen de Portada === */
+.img-portada {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* === Card de Apoyo === */
+.apoyo-card {
+  background-color: #003f4d;
+  color: #ffffff;
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* === Títulos y textos === */
+.apoyo-title {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.apoyo-box-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.apoyo-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #e0e0e0;
+  margin-bottom: 2.5rem;
+}
+
+.apoyo-content {
+  display: flex;
+  justify-content: center;
+}
+
+.apoyo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Imagen QR === */
+.apoyo-img {
+  width: 180px;
+  height: auto;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apoyo-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(50, 255, 126, 0.3);
+}
+
+/* === Botón === */
+.apoyo-button {
+  background-color: #32ff7e;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin-top: 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.apoyo-button:hover {
+  background-color: #2ecc71;
+}
+
+/* === Nota === */
+.apoyo-note {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* === Modal === */
+.apoyo-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.apoyo-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apoyo-img-modal {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* === Botón de cierre modal === */
+.apoyo-close {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  font-size: 2rem;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.apoyo-close:hover {
+  color: #ff6b6b;
+}
+
+/* === Animaciones === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .apoyo-card {
+    padding: 2rem 1.2rem;
+  }
+
+  .apoyo-title {
+    font-size: 1.6rem;
+  }
+
+  .apoyo-description {
+    font-size: 1rem;
+  }
+
+  .apoyo-img {
+    width: 150px;
+  }
+
+  .img-portada {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0.8rem;
+  }
+
+  .apoyo-close {
+    top: 1rem;
+    right: 1rem;
+  }
+}

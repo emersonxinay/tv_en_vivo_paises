@@ -1,5 +1,6 @@
 import '../assets/ChannelSelector.css';
-import { useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faPlay, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export default function ChannelSelector({
   channels,
@@ -14,12 +15,7 @@ export default function ChannelSelector({
     onSelect(url);
   };
 
-  useEffect(() => {
-    if (channels?.length > 0) {
-      console.log('📺 Lista de canales disponibles:');
-      console.table(channels.map(c => ({ Nombre: c.name, URL: c.url, Logo: c.logo })));
-    }
-  }, [channels]);
+
 
   return (
     <div className="channel-selector">
@@ -27,7 +23,7 @@ export default function ChannelSelector({
         <option value="">📺 Selecciona un canal</option>
         {channels.map((channel, index) => (
           <option key={index} value={channel.url}>
-            {favorites?.some(f => f.url === channel.url) ? '⭐ ' : ''}{channel.name}
+            {channel.name}
           </option>
         ))}
       </select>
@@ -50,26 +46,27 @@ export default function ChannelSelector({
 
               <div className="channel-info">
                 <span className="channel-name">
-                  {isFav ? '⭐ ' : ''}
-                  {channel.name}
+                  {isFav && <FontAwesomeIcon icon={faStar} className="channel-fav-icon" />} {channel.name}
                 </span>
 
                 <div className="channel-buttons">
                   <button
+                    className="channel-button"
                     onClick={(e) => {
                       e.stopPropagation();
                       onSelect(channel.url);
                     }}
                   >
-                    ▶️ Ver
+                    <FontAwesomeIcon icon={faPlay} /> Ver
                   </button>
                   <button
+                    className="channel-button"
                     onClick={(e) => {
                       e.stopPropagation();
                       onFavorite(channel);
                     }}
                   >
-                    {isFav ? '💔 Quitar' : '⭐ Favorito'}
+                    <FontAwesomeIcon icon={isFav ? faHeart : faStar} /> {isFav ? 'Quitar' : 'Fav'}
                   </button>
                 </div>
               </div>

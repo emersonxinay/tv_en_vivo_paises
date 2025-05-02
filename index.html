@@ -51,6 +51,21 @@
   </noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  let lastScroll = 0;
+  const navbar = document.querySelector('.navbar_compitv');
+
+  window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll) {
+  navbar.classList.add('navbar-hidden'); // scroll hacia abajo, ocultar
+  } else {
+  navbar.classList.remove('navbar-hidden'); // scroll hacia arriba, mostrar
+  }
+
+  lastScroll = currentScroll;
+  });
+
 </body>
 
 </html>

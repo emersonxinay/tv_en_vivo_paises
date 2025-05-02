@@ -8,9 +8,10 @@ import CanalDefecto from './components/CanalDefecto';
 import './App.css';
 import './assets/Video.css';
 import Footer from './components/shared/Footer';
-import logoImg from '../public/img/compitv.png';
-import portada from '../public/img/portadacompitv.png';
-
+import Apoyo from './components/Apoyo';
+import Navbar from './components/shared/Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp, faArrowDown, faStar } from '@fortawesome/free-solid-svg-icons';
 function App() {
   const [country, setCountry] = useState('pe');
   const [countryName, setCountryName] = useState('');
@@ -33,7 +34,6 @@ function App() {
         setStatus('🔄 Cargando canales...');
         try {
           const data = await fetchChannelsByCountry(country);
-          console.log('Canales cargados:', data);  // Verifica que los canales tienen el logo
           setChannels(data);
           setStatus(`${data.length} canales encontrados`);
         } catch {
@@ -90,26 +90,14 @@ function App() {
 
   return (
     <div className="App">
-      <div className="nav_container">
-        <div className="nav_content">
-          <div className="nav_links">
-            <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer">Compilandocode</a>
-            <span className="separator">|</span>
-            <a href="http://emersonespinoza.com" target="_blank" rel="noopener noreferrer">Emerson Espinoza</a>
-          </div>
-
-          <div className="nav_logo">
-            <img src={logoImg} alt="CompiTV Logo" />
-          </div>
-
-          <h2 className="nav_title">TV en Vivo por País</h2>
-        </div>
-      </div>
+      <Navbar />
 
       <CountrySelector selected={country} onChange={setCountry} />
 
-      <div className="main-video-lista">
+      <div className="main-video-lista" id='tv'>
         <div className="custom-video-player">
+
+
           {streamUrl && (
             <div className="custom-channel-name-display">
               <h3>{currentChannelName}</h3>
@@ -120,9 +108,10 @@ function App() {
 
           {filteredChannels.length > 0 && (
             <div className="custom-controls">
-              <button onClick={prevChannel}>🔼 Anterior</button>
-              <button onClick={nextChannel}>🔽 Siguiente</button>
+              <button onClick={prevChannel}><FontAwesomeIcon icon={faArrowUp} /> Anterior</button>
+              <button onClick={nextChannel}><FontAwesomeIcon icon={faArrowDown} /> Siguiente</button>
             </div>
+
           )}
         </div>
 
@@ -136,6 +125,7 @@ function App() {
             onChange={(e) => setSearch(e.target.value)}
             className="searchInput"
           />
+          {status && <p>{status}</p>}
 
           {filteredChannels.length > 0 && (
             <ChannelSelector
@@ -151,9 +141,10 @@ function App() {
             />
           )}
         </div>
+
       </div>
 
-      <div className="map-container">
+      <div className="map-container" id='mapa3d'>
         <p>Selecciona un país en el mapa para ver sus canales</p>
         <WorldMap onCountryClick={handleCountrySelect} />
       </div>
@@ -163,8 +154,8 @@ function App() {
       {status && <p>{status}</p>}
 
       {favorites.length > 0 && (
-        <>
-          <h2>⭐ Favoritos</h2>
+        < >
+          <h2 id='favoritos'><FontAwesomeIcon icon={faStar} /> Favoritos</h2>
           <ChannelSelector
             channels={favorites}  // Asegurándote de pasar los canales favoritos con logo
             onSelect={(url) => {
@@ -177,8 +168,9 @@ function App() {
           />
         </>
       )}
-      <img src={portada} alt="Portada CompiTV" className='img-portada' />
+      <Apoyo />
       <Footer />
+
     </div>
   );
 }

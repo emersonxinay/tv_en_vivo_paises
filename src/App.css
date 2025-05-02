@@ -13,7 +13,10 @@ html, body {
   flex-direction: row;
   height: 90vh; /* Puedes ajustar según tu layout */
   overflow: hidden;
-  background-color: #060c3b;
+  border-radius: 20px solid 1px rgba(0,0,0,0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Degradado azul petróleo */
+  padding: 20px;
   
 }
 
@@ -52,6 +55,7 @@ html, body {
   border-radius: 1rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
+
 
 
 @media (max-width: 768px) {
@@ -130,6 +134,7 @@ select:focus,
   overflow-y: auto; /* scroll si la lista es larga */
   padding: 0.5rem;
   position: relative;
+  width: 10%;
 }
 
 /* Este es el truco */
@@ -217,12 +222,12 @@ video {
 
 .listaCanales {
   flex: 1; /* Ocupa menos espacio */
-  background-color: #1a1a1a;
   color: white;
   overflow-y: auto;
   height: 100%; /* Que ocupe todo el alto del contenedor */
   padding: 1rem;
   box-shadow: inset 1px 0 5px rgba(0,0,0,0.3);
+  border-radius: solid 1px rgba(0,0,0,0.3);
 }
 
 /* Estilo opcional para los elementos de la lista */
@@ -421,3 +426,5 @@ video {
     margin: 0 15px;
   }
 }
+
+

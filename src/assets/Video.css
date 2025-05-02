@@ -1,6 +1,6 @@
 /* Contenedor principal del reproductor */
 .custom-video-player {
-  background-color: #000;
+
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
@@ -105,7 +105,7 @@
 
 /* Contenedor principal del reproductor de video */
 .custom-video-player {
-  background-color: #000;
+  
   border-radius: 10px;
   overflow: hidden;
   width: 100%;

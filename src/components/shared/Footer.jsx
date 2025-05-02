@@ -5,32 +5,16 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Logo de la app */}
-        <div className="footer-logo">
-          <p>Desarrollado con amor</p>
-          <a href="http://compilandocode.com" target="_blank" rel="noopener noreferrer"> <span>CompilandoTV</span></a>
+        <div className="footer-brand">
+          <p className="footer-text">Desarrollado con ❤️ por</p>
+          <a href="https://compilandocode.com" target="_blank" rel="noopener noreferrer" className="footer-link">Compilandocode</a>
+          <span className="footer-divider"> y </span>
+          <a href="https://emersonespinoza.com" target="_blank" rel="noopener noreferrer" className="footer-link">Emerson Espinoza</a>
         </div>
 
-
-
-        {/* Redes sociales */}
         <div className="footer-social">
-          <a
-            href="https://github.com/emersonxinay"
-            aria-label="GitHub"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github
-          </a>
-          <a
-            href="https://www.linkedin.com/in/emerson-espinoza-aguirre"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
+          <a href="https://github.com/emersonxinay" target="_blank" rel="noopener noreferrer" className="footer-social-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/emerson-espinoza-aguirre" target="_blank" rel="noopener noreferrer" className="footer-social-link">LinkedIn</a>
         </div>
       </div>
 
@@ -38,5 +22,6 @@ export default function Footer() {
         © 2025 AppTV. Todos los derechos reservados.
       </div>
     </footer>
+
   );
 }
